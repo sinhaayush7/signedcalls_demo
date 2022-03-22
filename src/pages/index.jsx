@@ -5,12 +5,19 @@ import clevertap from '../libs/ct-sdk'
 import { useRef, useState } from "react";
 import { CallForm } from "../components/callform.component";
 import { CardRow } from "../components/card.component";
+import { useStateWithCB } from "../hooks/useStateWithCallback";
 export const EntryPage = () => {
 
   const [dcClient, setDcClient] = useState(null)
   const [isConnected, setIsConnected] = useState(false)
-  const [showCaller, setShowCaller] = useState(false)
-  const [showReceiver, setShowReceiver] = useState(false)
+  const [showCaller, setShowCaller] = useStateWithCB(false, () => {
+    callerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  })
+  const [showReceiver, setShowReceiver] = useStateWithCB(false, () => {
+    receiverRef.current.scrollIntoView({
+      behavior: 'smooth', block: 'center'
+    })
+  })
   const [cuid, setCuid] = useState("")
   const cardRef = useRef(null)
   const callerRef = useRef(null)
@@ -31,23 +38,22 @@ export const EntryPage = () => {
       setDcClient(res)
       setIsConnected(res.isEnabled())
       // scroll to card row section
-      cardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+      cardRef.current.scrollIntoView({
+        behavior: 'smooth', block: 'center'
+      })
     }).catch(err => console.log(err))
   }
 
 
   const showCallerOrReceiver = (type) => {
-    console.log("hit")
     if (type === 'caller') {
       setShowCaller(true)
       setShowReceiver(false)
-      callerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     } else {
       setShowReceiver(true)
       setShowCaller(false)
-      receiverRef.current.scrollIntoView({
-        behavior: 'smooth', block: 'center'
-      })
+
     }
   }
 
@@ -58,6 +64,8 @@ export const EntryPage = () => {
   const disconnect = () => {
     dcClient.disconnect()
     setIsConnected(false)
+    setShowReceiver(false)
+    setShowCaller(false)
   }
 
   return (
