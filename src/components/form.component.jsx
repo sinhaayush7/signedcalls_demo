@@ -10,6 +10,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
   const [cc, setCC] = useState("")
   const [phone, setPhone] = useState("")
 
+
   const submit = (e) => {
     e.preventDefault();
     if (!connected) {
@@ -63,6 +64,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       required={true}
                       value={dcAccId}
+                      disabled={true}
                       onChange={e => setDcAccId(e.target.value)}
                     />
                   </div>
@@ -80,6 +82,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       required={true}
                       value={dcApikey}
+                      disabled={true}
                       onChange={e => setDcApikey(e.target.value)}
                     />
                   </div>
@@ -96,6 +99,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       placeholder="Clevertap's account id available in the dashboard"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       required={true}
+                      disabled={true}
                       value={ctAccId}
                       onChange={e => setCtAccId(e.target.value)}
                     />
