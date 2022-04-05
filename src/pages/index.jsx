@@ -62,7 +62,7 @@ export const EntryPage = () => {
   }
   // disconnects the sdk
   const disconnect = () => {
-    dcClient.disconnect()
+    dcClient.logout()
     setIsConnected(false)
     setShowReceiver(false)
     setShowCaller(false)
