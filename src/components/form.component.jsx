@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { generateCuid } from "../utils/cuid.generator"
 
 
 export const AuthForm = ({ submitFn, connected, disconnect }) => {
-  const [cuid, setCuid] = useState(generateCuid())
+  const [cuid, setCuid] = useState("")
   const [dcAccId, setDcAccId] = useState("61a52046f56a14cb19a1e9cc")
   const [dcApikey, setDcApikey] = useState("9dcced09dae16c5e3606c22346d92361b77efdb360425913850bea4f22d812dd")
   const [ctAccId, setCtAccId] = useState("W48-7W7-495Z")
@@ -34,22 +33,32 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
           <form action="#" className="text-left" onSubmit={submit}>
             <div className="shadow overflow-hidden sm:rounded-md">
               <div className="px-4 py-5 bg-white sm:p-6">
-                <div className="grid gap-6 ">
+                <div className="grid gap-6 mb-6">
                   <div className="col-span-12 sm:col-span-12">
                     <label htmlFor="cuid" className="block text-sm font-medium text-gray-700">
-                      Cuid *
+                      Cuid
                     </label>
-                    <input
-                      type="text"
-                      name="cuid"
-                      id="cuid"
-                      autoComplete="cuid"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required={true}
-                      value={cuid}
-                      onChange={e => setCuid(e.target.value)}
-                    />
+                    <div>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="cuid"
+                          id="cuid"
+                          autoComplete="cuid"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300"
+                          required={true}
+                          value={cuid}
+                          onChange={e => setCuid(e.target.value)}
+                          placeholder="email@clevertap.com"
+                        />
+                        <span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                          @clevertap.com
+                        </span>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div className="grid gap-6 ">
 
                   <div className="col-span-12 sm:col-span-12">
                     <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
