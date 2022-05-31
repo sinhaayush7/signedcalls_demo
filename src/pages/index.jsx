@@ -27,22 +27,31 @@ export const EntryPage = () => {
 
   // signin and validate the options
   const onSubmit = (initOptions) => {
+    console.log("hit on connect")
     setCuid(initOptions.cuid)
-    clevertap.privacy.push({ optOut: false })
-    clevertap.privacy.push({ useIP: false })
-    clevertap.init(initOptions.ctAccId, 'sk1')
-    DirectCallSDK.init({
-      ...initOptions,
-      clevertap
-    }).then(res => {
-      setDcClient(res)
-      setIsConnected(res.isEnabled())
-      // scroll to card row section
+    try {
+      clevertap.privacy.push({ optOut: false })
+      clevertap.privacy.push({ useIP: false })
+      clevertap.init(initOptions.ctAccId)
+      console.log(clevertap, DirectCallSDK)
+      DirectCallSDK.init({
+        ...initOptions,
+        clevertap
+      }).then(res => {
+        setDcClient(res)
+        setIsConnected(res.isEnabled())
+        // scroll to card row section
 
-      cardRef.current.scrollIntoView({
-        behavior: 'smooth', block: 'center'
-      })
-    }).catch(err => console.log(err))
+        cardRef.current.scrollIntoView({
+          behavior: 'smooth', block: 'center'
+        })
+      }).catch(err => console.log(err))
+
+    } catch (err) {
+      console.log(err)
+
+    }
+
   }
 
 
