@@ -14,7 +14,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
     e.preventDefault();
     if (!connected) {
       submitFn({
-        cuid: cuid + '@clevertap.com',
+        cuid: cuid,
         accountId: dcAccId,
         apikey: dcApikey,
         ctAccId,
