@@ -32,7 +32,7 @@ export const EntryPage = () => {
     try {
       clevertap.privacy.push({ optOut: false })
       clevertap.privacy.push({ useIP: false })
-      clevertap.init(initOptions.ctAccId)
+      clevertap.init(initOptions.ctAccId, 'sk1')
       console.log(clevertap, DirectCallSDK)
       DirectCallSDK.init({
         ...initOptions,
