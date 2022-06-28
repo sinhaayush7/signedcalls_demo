@@ -1,11 +1,15 @@
 import { useState } from "react"
 
-
+/**
+ * 
+ * @param {'48K-W44-556Z', 'sk1', 'wzrkt.com'} param0 
+ * @returns 
+ */
 export const AuthForm = ({ submitFn, connected, disconnect }) => {
   const [cuid, setCuid] = useState("")
   const [dcAccId, setDcAccId] = useState("61a52046f56a14cb19a1e9cc")
   const [dcApikey, setDcApikey] = useState("9dcced09dae16c5e3606c22346d92361b77efdb360425913850bea4f22d812dd")
-  const [ctAccId, setCtAccId] = useState("W48-7W7-495Z")
+  const [ctAccId, setCtAccId] = useState("48K-W44-556Z")
   const [cc, setCC] = useState("")
   const [phone, setPhone] = useState("")
 
