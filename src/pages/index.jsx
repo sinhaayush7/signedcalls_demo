@@ -1,6 +1,6 @@
 
 import { AuthForm } from "../components/form.component";
-import * as DirectCallSDK from '../libs/directcall-sdk'
+import { initDirectCall } from '../libs/clevertap-directcall'
 import clevertap from '../libs/ct-sdk'
 import { useRef, useState } from "react";
 import { CallForm } from "../components/callform.component";
@@ -33,8 +33,8 @@ export const EntryPage = () => {
       clevertap.privacy.push({ optOut: false })
       clevertap.privacy.push({ useIP: false })
       clevertap.init(initOptions.ctAccId, 'sk1')
-      console.log(clevertap, DirectCallSDK)
-      DirectCallSDK.init({
+      // console.log(clevertap, DirectCallSDK)
+      initDirectCall({
         ...initOptions,
         clevertap
       }).then(res => {
