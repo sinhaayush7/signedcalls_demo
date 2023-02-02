@@ -81,7 +81,7 @@ export const EntryPage = () => {
 
   return (
     <>
-      <h1 className="text-4xl	mt-6">Signed Calls</h1>
+      <h1 className="text-6xl	mt-6 pt-28">Signed Calls</h1>
       <AuthForm submitFn={onSubmit} connected={isConnected} disconnect={disconnect}/>
       <div className={isConnected ? "block" : "hidden"}>
         <CardRow myref={cardRef} action={showCallerOrReceiver} />

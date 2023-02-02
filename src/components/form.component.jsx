@@ -52,7 +52,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
 
   return (
     <>
-      <div className="m-auto mt-10 sm:mt-0 w-9/12">
+      <div className="m-auto mt-10 sm:mt-0 w-5/12 pt-20">
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form action="#" className="text-left" onSubmit={submit}>
             <div className="shadow overflow-hidden sm:rounded-md">
