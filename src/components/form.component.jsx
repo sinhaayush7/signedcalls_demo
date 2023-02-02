@@ -120,7 +120,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
 
                   <div className="col-span-12 sm:col-span-12">
                     <label htmlFor="ct-account-id" className="block text-sm font-medium text-gray-700">
-                      Clevertap Account Id *
+                      Clevertap Account Region *
                     </label>
                     <input
                       type="text"
@@ -131,7 +131,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       required={true}
                       disabled={false}
-                      value={ctAccId}
+                      value={ctRegion}
                       onChange={e => setCTRegion(e.target.value)}
                     />
                   </div>
