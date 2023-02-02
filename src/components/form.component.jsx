@@ -1,19 +1,30 @@
 import { useState } from "react"
 
+
+function randomString(length, chars) {
+  var result = '';
+  for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+  return result;
+}
+
+
+const generateRandomCuid = () => (
+  randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+)
+
 /**
  * 
  * @returns 
  */
 export const AuthForm = ({ submitFn, connected, disconnect }) => {
-  const [cuid, setCuid] = useState("")
+  const [cuid, setCuid] = useState(generateRandomCuid)
   const [dcAccId, setDcAccId] = useState("61a52046f56a14cb19a1e9cc")
   const [dcApikey, setDcApikey] = useState("9dcced09dae16c5e3606c22346d92361b77efdb360425913850bea4f22d812dd")
   const [ctAccId, setCtAccId] = useState("ZWW-WWW-WW4Z")
   const [ctRegion, setCTRegion] = useState("in1")
   const [cc, setCC] = useState("")
   const [phone, setPhone] = useState("")
-
-
+  
   const submit = (e) => {
     e.preventDefault();
     if (!connected) {
@@ -23,7 +34,8 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
         apikey: dcApikey,
         ctAccId,
         cc,
-        phone
+        phone,
+        ctRegion
       })
     } else {
       disconnect()
