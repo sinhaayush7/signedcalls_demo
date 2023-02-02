@@ -118,7 +118,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       onChange={e => setDcApikey(e.target.value)}
                     />
                   </div> */}
-                  <div className="col-span-12 sm:col-span-12">
+                  <div className="col-span-12 sm:col-span-12" style={{"paddingBottom": 100}}>
                     <label htmlFor="sc-region" className="block text-sm font-medium text-gray-700">
                       Select Region
                     </label>
