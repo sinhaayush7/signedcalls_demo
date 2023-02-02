@@ -3,9 +3,11 @@ import { AuthForm } from "../components/form.component";
 import { initSignedCall } from '../libs/clevertap-signedcall.module'
 import clevertap from 'clevertap-web-sdk'
 import { useRef, useState } from "react";
-import { CallForm } from "../components/callform.component";
+import { CallForm } from "../components/callform.wrapper";
 import { CardRow } from "../components/card.component";
 import { useStateWithCB } from "../hooks/useStateWithCallback";
+import { generateCuid } from "../utils/cuid.generator";
+import { scAccountId, scApikey } from "../utils/constants";
 export const EntryPage = () => {
 
   const [dcClient, setDcClient] = useState(null)
@@ -18,11 +20,10 @@ export const EntryPage = () => {
       behavior: 'smooth', block: 'center'
     })
   })
-  const [cuid, setCuid] = useState("")
+  const [cuid, setCuid] = useState(generateCuid(7))
   const cardRef = useRef(null)
   const callerRef = useRef(null)
   const receiverRef = useRef(null)
-
 
 
   // signin and validate the options
@@ -81,7 +82,7 @@ export const EntryPage = () => {
   return (
     <>
       <h1 className="text-4xl	mt-6">Welcome To Direct Call</h1>
-      <AuthForm submitFn={onSubmit} connected={isConnected} disconnect={disconnect} />
+      <AuthForm submitFn={onSubmit} connected={isConnected} disconnect={disconnect}/>
       <div className={isConnected ? "block" : "hidden"}>
         <CardRow myref={cardRef} action={showCallerOrReceiver} />
       </div>

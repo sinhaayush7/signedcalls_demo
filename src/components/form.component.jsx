@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { ctAccountAndRegions, scAccountId, scApikey } from "../utils/constants";
+import Select from 'react-dropdown-select';
 
 
 function randomString(length, chars) {
@@ -18,12 +20,18 @@ const generateRandomCuid = () => (
  */
 export const AuthForm = ({ submitFn, connected, disconnect }) => {
   const [cuid, setCuid] = useState(generateRandomCuid)
-  const [dcAccId, setDcAccId] = useState("61a52046f56a14cb19a1e9cc")
-  const [dcApikey, setDcApikey] = useState("9dcced09dae16c5e3606c22346d92361b77efdb360425913850bea4f22d812dd")
+  const [dcAccId, setDcAccId] = useState(scAccountId)
+  const [dcApikey, setDcApikey] = useState(scApikey)
   const [ctAccId, setCtAccId] = useState("ZWW-WWW-WW4Z")
   const [ctRegion, setCTRegion] = useState("in1")
   const [cc, setCC] = useState("")
   const [phone, setPhone] = useState("")
+
+  const onRegionChange = (value) => {
+    console.log(value)
+    setCTRegion(value[0]?.label)
+    setCtAccId(value[0]?.value)
+  }
   
   const submit = (e) => {
     e.preventDefault();
@@ -111,40 +119,11 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       onChange={e => setDcApikey(e.target.value)}
                     />
                   </div>
-
                   <div className="col-span-12 sm:col-span-12">
-                    <label htmlFor="ct-account-id" className="block text-sm font-medium text-gray-700">
-                      Clevertap Account Id *
-                    </label>
-                    <input
-                      type="text"
-                      name="ct-account-id"
-                      id="ct-account-id"
-                      autoComplete="ct-account-id"
-                      placeholder="Clevertap's account id available in the dashboard"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required={true}
-                      disabled={false}
-                      value={ctAccId}
-                      onChange={e => setCtAccId(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="col-span-12 sm:col-span-12">
-                    <label htmlFor="ct-account-id" className="block text-sm font-medium text-gray-700">
-                      Clevertap Account Region *
-                    </label>
-                    <input
-                      type="text"
-                      name="ct-account-region"
-                      id="ct-account-region"
-                      autoComplete="ct-account-region"
-                      placeholder="Clevertap's account region available in the dashboard"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required={true}
-                      disabled={false}
-                      value={ctRegion}
-                      onChange={e => setCTRegion(e.target.value)}
+                    <Select
+                      options={ctAccountAndRegions}
+                      onChange={(values) => onRegionChange(values)}
+                      values={[{ label: "in1", value: "ZWW-WWW-WW4Z" }]}
                     />
                   </div>
 
