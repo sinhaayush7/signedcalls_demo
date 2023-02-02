@@ -1,6 +1,6 @@
 
 import { AuthForm } from "../components/form.component";
-import { initDirectCall } from '../libs/clevertap-signedcall.module'
+import { initSignedCall } from '../libs/clevertap-signedcall.module'
 import clevertap from 'clevertap-web-sdk'
 import { useRef, useState } from "react";
 import { CallForm } from "../components/callform.component";
