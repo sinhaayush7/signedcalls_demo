@@ -83,8 +83,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                   </div>
                 </div>
                 <div className="grid gap-6 ">
-
-                  <div className="col-span-12 sm:col-span-12">
+                  {/* <div className="col-span-12 sm:col-span-12">
                     <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
                       DC Account Id *
                     </label>
@@ -100,8 +99,8 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       disabled={true}
                       onChange={e => setDcAccId(e.target.value)}
                     />
-                  </div>
-
+                  </div> */}
+{/* 
                   <div className="col-span-12 sm:col-span-12">
                     <label htmlFor="dc-api-key" className="block text-sm font-medium text-gray-700">
                       DC Api Key *
@@ -118,16 +117,20 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       disabled={true}
                       onChange={e => setDcApikey(e.target.value)}
                     />
-                  </div>
+                  </div> */}
                   <div className="col-span-12 sm:col-span-12">
+                    <label htmlFor="sc-region" className="block text-sm font-medium text-gray-700">
+                      Select Region
+                    </label>
                     <Select
                       options={ctAccountAndRegions}
+                      id="sc-region"
                       onChange={(values) => onRegionChange(values)}
                       values={[{ label: "in1", value: "ZWW-WWW-WW4Z" }]}
                     />
                   </div>
 
-                  <div className="col-span-6">
+                  {/* <div className="col-span-6">
                     <label htmlFor="cc" className="block text-sm font-medium text-gray-700">
                       CC
                     </label>
@@ -141,9 +144,9 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       min="1"
                       onChange={e => setCC(e.target.value)}
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-span-6 sm:col-span-6 lg:col-span-6">
+                  {/* <div className="col-span-6 sm:col-span-6 lg:col-span-6">
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                       Phone
                     </label>
@@ -157,7 +160,7 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       type="number"
                       onChange={e => setPhone(e.target.value)}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6 mt-5">
