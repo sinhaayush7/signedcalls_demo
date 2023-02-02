@@ -2,14 +2,14 @@ import { useState } from "react"
 
 /**
  * 
- * @param {'48K-W44-556Z', 'sk1', 'wzrkt.com'} param0 
  * @returns 
  */
 export const AuthForm = ({ submitFn, connected, disconnect }) => {
   const [cuid, setCuid] = useState("")
   const [dcAccId, setDcAccId] = useState("61a52046f56a14cb19a1e9cc")
   const [dcApikey, setDcApikey] = useState("9dcced09dae16c5e3606c22346d92361b77efdb360425913850bea4f22d812dd")
-  const [ctAccId, setCtAccId] = useState("48K-W44-556Z")
+  const [ctAccId, setCtAccId] = useState("ZWW-WWW-WW4Z")
+  const [ctRegion, setCTRegion] = useState("in1")
   const [cc, setCC] = useState("")
   const [phone, setPhone] = useState("")
 
@@ -112,9 +112,27 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                       placeholder="Clevertap's account id available in the dashboard"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       required={true}
-                      disabled={true}
+                      disabled={false}
                       value={ctAccId}
                       onChange={e => setCtAccId(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="col-span-12 sm:col-span-12">
+                    <label htmlFor="ct-account-id" className="block text-sm font-medium text-gray-700">
+                      Clevertap Account Id *
+                    </label>
+                    <input
+                      type="text"
+                      name="ct-account-region"
+                      id="ct-account-region"
+                      autoComplete="ct-account-region"
+                      placeholder="Clevertap's account region available in the dashboard"
+                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      required={true}
+                      disabled={false}
+                      value={ctAccId}
+                      onChange={e => setCTRegion(e.target.value)}
                     />
                   </div>
 
