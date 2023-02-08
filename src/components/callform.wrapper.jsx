@@ -10,7 +10,7 @@ export const CallForm = ({ call, myref }) => {
   }
 
   return (
-    <div ref={myref} className="m-auto mt-10 sm:mt-0 w-9/12">
+    <div ref={myref} className="m-auto mt-10 sm:mt-0 w-9/12 mb-10">
       <div className="mt-5 md:mt-0 md:col-span-2">
         <form action="#" className="text-left" onSubmit={makecall}>
           <div className="shadow overflow-hidden sm:rounded-md">
@@ -31,11 +31,8 @@ export const CallForm = ({ call, myref }) => {
                         required={true}
                         value={cuid}
                         onChange={e => setCuid(e.target.value)}
-                        placeholder="receiveremail@clevertap.com"
+                        placeholder="enter receiver's cuid"
                       />
-                      <span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                        @clevertap.com
-                      </span>
                     </div>
                   </div>
                 </div>

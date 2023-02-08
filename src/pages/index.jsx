@@ -7,7 +7,7 @@ import { CallForm } from "../components/callform.wrapper";
 import { CardRow } from "../components/card.component";
 import { useStateWithCB } from "../hooks/useStateWithCallback";
 import { generateCuid } from "../utils/cuid.generator";
-import { scAccountId, scApikey } from "../utils/constants";
+import image from '../Logo.svg'
 export const EntryPage = () => {
 
   const [dcClient, setDcClient] = useState(null)
@@ -81,7 +81,8 @@ export const EntryPage = () => {
 
   return (
     <>
-      <h1 className="text-6xl	mt-6 pt-28">Signed Calls</h1>
+      <img src={image} style={{"display": "block", "margin": "9rem auto 0px auto"} } alt="" />
+      <h1 className="text-6xl pt-4 mb-10">Signed Calls</h1>
       <AuthForm submitFn={onSubmit} connected={isConnected} disconnect={disconnect}/>
       <div className={isConnected ? "block" : "hidden"}>
         <CardRow myref={cardRef} action={showCallerOrReceiver} />

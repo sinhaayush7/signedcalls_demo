@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { ctAccountAndRegions, scAccountId, scApikey } from "../utils/constants";
-import Select from 'react-dropdown-select';
+import {  scAccountId, scApikey } from "../utils/constants";
 
 
 function randomString(length, chars) {
@@ -11,7 +10,7 @@ function randomString(length, chars) {
 
 
 const generateRandomCuid = () => (
-  randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+  randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 )
 
 /**
@@ -20,30 +19,17 @@ const generateRandomCuid = () => (
  */
 export const AuthForm = ({ submitFn, connected, disconnect }) => {
   const [cuid, setCuid] = useState(generateRandomCuid)
-  const [dcAccId, setDcAccId] = useState(scAccountId)
-  const [dcApikey, setDcApikey] = useState(scApikey)
-  const [ctAccId, setCtAccId] = useState("ZWW-WWW-WW4Z")
-  const [ctRegion, setCTRegion] = useState("in1")
-  const [cc, setCC] = useState("")
-  const [phone, setPhone] = useState("")
 
-  const onRegionChange = (value) => {
-    console.log(value)
-    setCTRegion(value[0]?.label)
-    setCtAccId(value[0]?.value)
-  }
   
   const submit = (e) => {
     e.preventDefault();
     if (!connected) {
       submitFn({
         cuid: cuid,
-        accountId: dcAccId,
-        apikey: dcApikey,
-        ctAccId,
-        cc,
-        phone,
-        ctRegion
+        accountId: scAccountId,
+        apikey: scApikey,
+        ctAccId: "ZWW-WWW-WW4Z",
+        ctRegion: "in1"
       })
     } else {
       disconnect()
@@ -73,97 +59,14 @@ export const AuthForm = ({ submitFn, connected, disconnect }) => {
                           required={true}
                           value={cuid}
                           onChange={e => setCuid(e.target.value)}
-                          placeholder="email@clevertap.com"
+                          placeholder="your name without special characters"
                         />
-                        <span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                          @clevertap.com
-                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="grid gap-6 ">
-                  {/* <div className="col-span-12 sm:col-span-12">
-                    <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                      DC Account Id *
-                    </label>
-                    <input
-                      type="text"
-                      name="dc-accountid"
-                      id="dc-accountid"
-                      placeholder="Direct Call's account id available in the dashboard"
-                      autoComplete="family-name"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required={true}
-                      value={dcAccId}
-                      disabled={true}
-                      onChange={e => setDcAccId(e.target.value)}
-                    />
-                  </div> */}
-{/* 
-                  <div className="col-span-12 sm:col-span-12">
-                    <label htmlFor="dc-api-key" className="block text-sm font-medium text-gray-700">
-                      DC Api Key *
-                    </label>
-                    <input
-                      type="text"
-                      name="dc-api-key"
-                      id="dc-api-key"
-                      autoComplete="dc-apikey"
-                      placeholder="Direct Call's api key available in the dashboard"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required={true}
-                      value={dcApikey}
-                      disabled={true}
-                      onChange={e => setDcApikey(e.target.value)}
-                    />
-                  </div> */}
-                  <div className="col-span-12 sm:col-span-12" style={{"paddingBottom": 100}}>
-                    <label htmlFor="sc-region" className="block text-sm font-medium text-gray-700">
-                      Select Region
-                    </label>
-                    <Select
-                      options={ctAccountAndRegions}
-                      id="sc-region"
-                      onChange={(values) => onRegionChange(values)}
-                      values={[{ label: "in1", value: "ZWW-WWW-WW4Z" }]}
-                    />
-                  </div>
-
-                  {/* <div className="col-span-6">
-                    <label htmlFor="cc" className="block text-sm font-medium text-gray-700">
-                      CC
-                    </label>
-                    <input
-                      type="number"
-                      name="cc"
-                      id="cc"
-                      autoComplete="cc"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      value={cc}
-                      min="1"
-                      onChange={e => setCC(e.target.value)}
-                    />
-                  </div> */}
-
-                  {/* <div className="col-span-6 sm:col-span-6 lg:col-span-6">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                      Phone
-                    </label>
-                    <input
-                      name="phone"
-                      id="phone"
-                      autoComplete="address-level2"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      value={phone}
-                      min="1"
-                      type="number"
-                      onChange={e => setPhone(e.target.value)}
-                    />
-                  </div> */}
-                </div>
               </div>
-              <div className="px-4 py-3 bg-gray-50 text-right sm:px-6 mt-5">
+              <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 {
                   connected ? <button
                     type="submit"
