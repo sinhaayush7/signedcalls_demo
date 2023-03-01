@@ -40,6 +40,7 @@ export const EntryPage = () => {
         ...initOptions,
         clevertap
       }).then(res => {
+        window.signedCallClient = res
         setDcClient(res)
         setIsConnected(res.isEnabled())
         // scroll to card row section
