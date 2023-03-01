@@ -9,7 +9,9 @@ import { useStateWithCB } from "../hooks/useStateWithCallback";
 import { generateCuid } from "../utils/cuid.generator";
 import image from '../Logo.svg'
 export const EntryPage = () => {
-
+  clevertap.privacy.push({ optOut: false })
+  clevertap.privacy.push({ useIP: false })
+  clevertap.init("ZWW-WWW-WW4Z", "in1")
   const [dcClient, setDcClient] = useState(null)
   const [isConnected, setIsConnected] = useState(false)
   const [showCaller, setShowCaller] = useStateWithCB(false, () => {
@@ -31,9 +33,7 @@ export const EntryPage = () => {
     console.log("hit on connect")
     setCuid(initOptions.cuid)
     try {
-      clevertap.privacy.push({ optOut: false })
-      clevertap.privacy.push({ useIP: false })
-      clevertap.init(initOptions.ctAccId, initOptions.ctRegion)
+      
       console.log({initOptions})
       // console.log(clevertap, DirectCallSDK)
       initSignedCall({
