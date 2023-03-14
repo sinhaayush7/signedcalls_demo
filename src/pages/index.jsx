@@ -85,7 +85,7 @@ export const EntryPage = () => {
   return (
     <>
       <img src={image} style={{"display": "block", "margin": "9rem auto 0px auto"} } alt="" />
-      <h1 className="text-6xl pt-4 mb-10">Signed Calls</h1>
+      <h1 className="text-6xl pt-4 mb-10">Signed Call</h1>
       <AuthForm submitFn={onSubmit} connected={isConnected} disconnect={disconnect}/>
       <div className={isConnected ? "block" : "hidden"}>
         <CardRow myref={cardRef} action={showCallerOrReceiver} />
