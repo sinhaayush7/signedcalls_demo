@@ -70,7 +70,9 @@ export const EntryPage = () => {
   }
 
   const makecall = ({ cuid, context }) => {
-    dcClient.call(cuid, context).then(res => console.log(res)).catch(err => console.log(err))
+    dcClient.call(cuid, context, {
+      receiver_image: "https://logos-world.net/wp-content/uploads/2021/08/Byjus-Logo.png",
+    }).then(res => console.log(res)).catch(err => console.log(err))
   }
   // disconnects the sdk
   const disconnect = () => {
